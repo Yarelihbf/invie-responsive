@@ -4,14 +4,15 @@
 		<meta charset="UTF-8">
 		<title>Invie - Tus mejores guitarras!!</title>
 		<link rel="stylesheet" href="css/invie.css"/>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat|Allerta' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat|Allerta' rel='stylesheet' type='text/css'/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-sacalable=no"/>  <!-- viewport area visible del navegador, con el ancho del dispositivo, con escala del 1 =100%  "user-scalable=no" quita el zoom -->
 	</head>
 	<body>
 		<section id="portada" class="portada background"> <!-- portada -->
 		<header id="header" class="header contenedor"> <!-- header -->
 			<figure class="logotipo"> <!-- logotipo -->
-				<img src="images/invie.png" width="186" height= "60" alt="Invie logotipo">
+				<!-- El atributo srcsert nos permite poner las imagen en mayor resolucuin dependiendo de la pantalla que se utilice de las imagenes puedes poner el tamaño de resolucion -->
+				<img src="images/invie.png" srcset="images/invie.png 1x, images/invie2x.png 2x" width="186" height= "60" alt="Invie logotipo">
 			</figure>
 			<span class="burguer-button icon-menu" id="burguer-button"></span>
 			<nav class="menu" id="menu"><!-- menu -->
@@ -31,13 +32,19 @@
 		<section id="guitarras" class="guitarras contenedor"><!-- guitarras -->
 			<h2>Nuestras guitarras</h2><!-- titulo -->
 			<!-- hacer un video de youtube o insertados de una url responsivo -->
-			<div class="video-responsive-contenedor">
-				<iframe class= "video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allowfullscreen></iframe>
+			<div class="video-demo-contenedor">
+				<div class="video-demo">
+					<div class="video-responsive-contenedor">
+						<iframe class= "video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" altlowfullscreen></iframe>
+					</div>
+				</div>
 			</div>
 			
-			<video src="video/320X240.ogg"></video>
+			
+			
+			<!-- <video src="video/320X240.ogg"></video> -->
 			<article class="guitarra"><!-- guitarra 1 -->
-				<img data-src="images/invie-acustica.png" width="350" alt="Guitarra Ivie Acutica" class="derecha">
+				<img data-src="images/invie-acustica.png|images/invie-acustica2x.png" width="350" alt="Guitarra Ivie Acutica" class="derecha">
 				<div class="contenedor-guitarra-a">
 					<h3 class="title-b">Invie Acústica</h3>
 					<ol>
@@ -48,7 +55,7 @@
 				</div>
 			</article>
 			<article class="guitarra"><!-- guitarra 2 -->
-				<img data-src="images/invie-classic.png" width="350" alt="Guitarra Invie Clasic" class="izquierda">
+				<img data-src="images/invie-classic.png| images/invie-classic2x.png" width="350" alt="Guitarra Invie Clasic" class="izquierda">
 				<div class="contenedor-guitarra-b">
 					<h3 class="title-b">Invie Classic</h3>
 					<ol>
@@ -62,7 +69,7 @@
 		<footer class="footer">
 			<div class="contenedor">
 				<div class="contacto">
-					<img data-src="images/invie-white.png" alt="logotipo blanco"> <!-- data-rsc es el Lazy loading o be lazy para cargar solo las images que se vayan haciendo visibles -->
+					<img data-src="images/invie-white.png| images/invie-white2x.png" alt="logotipo blanco"> <!-- data-rsc es el Lazy loading o be lazy para cargar solo las images que se vayan haciendo visibles -->
 					<a href="tel:+523330307187"><strong>Telefono</strong><span>30307187</span></a>
 					<a href="mailto:contacto@invie.com"><strong>E-mail</strong><span>contacto@invie.com</span></a>
 				</div>
@@ -103,7 +110,9 @@
 				</form>
 			</div>
 		</footer>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.2/blazy.min.js"></script>
+
 		<script>
 
 		// ----De esta manera se activan o desactivan features dentro de nuestra aplicación------
@@ -114,7 +123,15 @@
 			var $menu = document.getElementById('menu');
 //Que evento y que queremos hacer
 			function toggleMenu(){
-						$menu.classList.toggle('active');
+				$menu.classList.toggle('active');
+			};
+
+			function showMenu(){
+				$menu.classList.add('active'); //activar
+			};
+
+			function hideMenu(){
+				$menu.classList.remove('active'); //desactivar
 			};
 
 			function mediaQuery(){
@@ -137,6 +154,13 @@
 			    // options
 			    selector: 'img'  //que es lo que quieres que cargue, por medio de un selector
 			});
+
+			// Gestos touch hammersjs
+			var $body = document.body;  
+			var gestos = new Hammer($body);
+			gestos.on('swipeleft', hideMenu);
+			gestos.on('swiperight', showMenu);
+
 		</script>
 
 	</body>
