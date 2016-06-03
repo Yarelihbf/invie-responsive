@@ -417,8 +417,13 @@ body {
   .col1{
     margin: 0;
   }
-  input [type="text"],
-  input [type="email"] { /*selector de atributo, llamando a una segunda referancia de la etiqueta [type="tipo de atributo"]*/
+
+  input[type="text"] {
+     margin-bottom: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"] { /*selector de atributo, llamando a una segunda referancia de la etiqueta [type="tipo de atributo"]*/
     font-size: 18px;
     padding: 5px;
   }
@@ -427,8 +432,8 @@ body {
     width: 100%;
   }
 
-  input [type="radio"],
-  input [type="checkbox"] {
+  input[type="radio"],
+  input[type="checkbox"] {
     zoom: 1.5;
   }
 }
