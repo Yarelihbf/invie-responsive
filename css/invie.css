@@ -401,17 +401,25 @@ body {
 
   .contacto{
     margin: 0 auto;
+    display: block;
   }
 
+  .contacto a{
+    display: block;
+  }
   .formulario{
     display: block;
     margin: 0 auto;
     width: 300px;
   }
 
+  .sexo label{
+    display: block;
+
+  }
   .intereses label{
     display: block;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .col1{
